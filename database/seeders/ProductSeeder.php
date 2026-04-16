@@ -8,12 +8,10 @@ use App\Models\Product;
 
 class ProductSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        Product::create([
+        Product::factory()->count(10)->create();
+        /* Product::create([
         'name'=>'producto 1',
         'price'=>10,
         'stock'=>10,
@@ -29,8 +27,7 @@ class ProductSeeder extends Seeder
         'name'=>'producto 3',
         'price'=>20,
         'stock'=>10,
-        ]);
-
+        ]); */
         $product = Product::find(1);
 
         $product->name = 'Hormigonera';
