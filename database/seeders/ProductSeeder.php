@@ -11,7 +11,8 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         Product::factory()->count(10)->create();
-        /* Product::create([
+
+        Product::create([
         'name'=>'producto 1',
         'price'=>10,
         'stock'=>10,
@@ -27,7 +28,8 @@ class ProductSeeder extends Seeder
         'name'=>'producto 3',
         'price'=>20,
         'stock'=>10,
-        ]); */
+        ]);
+        
         $product = Product::find(1);
 
         $product->name = 'Hormigonera';
