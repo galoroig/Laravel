@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,3 +20,5 @@ return 'Hola, ' . $nombre . '!'; });
 Route::get('/products', [ProductController::class, 'create']);
 
 Route::post('/products', [ProductController::class, 'store']);
+
+Route::get('/productos', [ProductoController::class, 'index']);

@@ -11,7 +11,14 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $productos = [
+            ['nombre' => 'Teclado mecánico', 'precio' => 45000, 'stock' => 12],
+            ['nombre' => 'Monitor 24"',      'precio' => 180000, 'stock' => 5],
+            ['nombre' => 'Mouse inalámbrico', 'precio' => 22000, 'stock' => 0],
+            ['nombre' => 'Headset gaming',   'precio' => 38000, 'stock' => 8],
+        ];
+
+        return view('products.index', compact('productos'));
     }
 
     /**
