@@ -3,69 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
-class ProductoController extends Controller
+class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function create(){
+
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'description' => 'required|string|max:255',
+        ]);
+        
+        Product::create($request->all());
+
+        /* return redirect('/products'); */
+    }
+
     public function index()
     {
-        $productos = [
-            ['nombre' => 'Teclado mecánico', 'precio' => 45000, 'stock' => 12],
-            ['nombre' => 'Monitor 24"',      'precio' => 180000, 'stock' => 5],
-            ['nombre' => 'Mouse inalámbrico', 'precio' => 22000, 'stock' => 0],
-            ['nombre' => 'Headset gaming',   'precio' => 38000, 'stock' => 8],
-        ];
-
-        return view('products.index', compact('productos'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        $products = Product::all();
+        return view('products.index', compact('products'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(Product $product)
+{
+    //
+}
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+public function edit(Product $product)
+{
+    //
+}
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+public function update(Request $request, Product $product)
+{
+    //
+}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+public function destroy(Product $product)
+{
+    //
+}
 }

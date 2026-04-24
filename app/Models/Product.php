@@ -11,6 +11,6 @@ class Product extends Model
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['name','price','stock'];
+    protected $fillable = ['name','price','stock','description'];
 }
 

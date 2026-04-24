@@ -10,9 +10,9 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        Product::factory()->count(10)->create();
+        Product::factory()->count(50)->create();
 
-        Product::create([
+        /* Product::create([
         'name'=>'producto 1',
         'price'=>10,
         'stock'=>10,
@@ -45,6 +45,6 @@ class ProductSeeder extends Seeder
 
         $menor = Product::where('price', $min)->pluck('id');
 
-        Product::destroy($menor);
+        Product::destroy($menor);*/
     }
 }

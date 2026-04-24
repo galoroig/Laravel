@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,8 +18,12 @@ return 'Hola desde Laravel!';
 Route::get('/hola/{nombre}', function ($nombre) { 
 return 'Hola, ' . $nombre . '!'; });
 
-Route::get('/products', [ProductController::class, 'create']);
+Route::get('/product', [ProductController::class, 'create']);
 
-Route::post('/products', [ProductController::class, 'store']);
+
+
+Route::post('/product', [ProductController::class, 'store']);
 
 Route::get('/productos', [ProductoController::class, 'index']);
+
+Route::resource('products', ProductController::class);
