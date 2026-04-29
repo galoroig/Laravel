@@ -18,12 +18,10 @@ return 'Hola desde Laravel!';
 Route::get('/hola/{nombre}', function ($nombre) { 
 return 'Hola, ' . $nombre . '!'; });
 
-Route::get('/product', [ProductController::class, 'create']);
-
-
+/* Route::get('/product', [ProductController::class, 'create']);
 
 Route::post('/product', [ProductController::class, 'store']);
 
-Route::get('/productos', [ProductoController::class, 'index']);
+Route::get('/productos', [ProductController::class, 'index']); */
 
 Route::resource('products', ProductController::class);

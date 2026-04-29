@@ -29,14 +29,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-                $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'stock' => 'required|numeric',
             'description' => 'required|string|max:255',
         ]);
         
-        Product::create($request->all());
+        Product::create($request->only(['name', 'price', 'stock', 'description']));
+
+        return redirect()->route('products.index')
+                     ->with('success', 'Producto creado correctamente.');
     }
 
     /**
@@ -44,7 +47,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -52,7 +55,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -60,7 +63,22 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'description' => 'required|string|max:255',
+        ]);
+
+        $product->update([
+            'name'=>$request->name,
+            'price'=>$request->price,
+            'stock'=>$request->stock,
+            'description'=>$request->description,
+        ]);
+
+        return redirect()->route('products.index')
+                     ->with('success', 'Producto actualizado correctamente.');
     }
 
     /**
@@ -68,6 +86,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('products.index')
+                     ->with('success', 'Producto eliminado correctamente.');
     }
 }

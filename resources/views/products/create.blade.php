@@ -6,16 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action:"/products">
+    <form method="POST" action="/products">
         @csrf
         <label>Name:</label>
         <input type="text" name="name" required><br><br>
 
-        <label>Description:</label>
-        <input type="text" name="description" required><br><br>
+        <label>Stock:</label>
+        <input type="number" name="stock" required><br><br>
         
         <label>Price:</label>
         <input type="number" name="price" required><br><br>
+
+        <label>Description:</label>
+        <input type="text" name="description" required><br><br>
 
         <button type="submit">Guardar</button>
     </form>
